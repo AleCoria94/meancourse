@@ -1,5 +1,8 @@
 import { Post } from './post.model'
-
+//
+//import { Injectable } from '@angular/core';
+//@Injectable({providedIn:'root'})
+// Esto es equivalente a importar PostService en el array de providers en app.module.ts
 export class PostsService{
     private posts: Post []= [];
 
