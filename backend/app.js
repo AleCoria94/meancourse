@@ -2,7 +2,16 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const app= express();
 
+const mongoose = require ("mongoose");
+
 const Post = require ('./models/posts');
+
+mongoose.connect ("mongodb+srv://AXEL:<PASSWORD>@cluster0.vfroy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+.then(()=> {
+ console.log("Te conectaste a la base"); 
+}).catch (()=> {
+ console.log("Error en la conexión"); 
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
