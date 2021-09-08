@@ -6,7 +6,7 @@ const mongoose = require ("mongoose");
 
 const Post = require ('./models/posts');
 
-mongoose.connect ("mongodb+srv://AXEL:<PASSWORD>@cluster0.vfroy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+mongoose.connect ("mongodb+srv://ALEX:<password>@cluster0.vfroy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=> {
  console.log("Te conectaste a la base"); 
 }).catch (()=> {
@@ -34,6 +34,7 @@ app.use((req, res, next) => {
       title : req.body.title,
       content : req.body.content
     });
+    post.save();
     console.log(post);
     res.status(201).json({
       message: 'Post added successfully'
@@ -42,22 +43,12 @@ app.use((req, res, next) => {
   });
 
 app.get('/api/posts',(req,res,next)=>{
-const posts = [
-{ 
-    id:'4556',
-    title : 'Primer posteo desde el backend',
-    content: 'Este sería el primer párrafo'
-},
-{ 
-    id:'xhxg',
-    title : 'Segundo posteo desde el backend',
-    content: 'Este sería el segundo párrafo'
-}];
-    
+Post.find().then(documents=> {
   return res.status(200).json({
       message: 'Los posts sean unidos, esa es la ley primera',
-      posts: posts
-  });  
+      posts: documents
+      })
+    });  
 });
 
 module.exports= app;
