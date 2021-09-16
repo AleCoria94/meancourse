@@ -14,14 +14,14 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { PostsService } from './posts/posts.service';
-
+import { AppRoutingModule} from './app.routing.module';
 
 @NgModule({
   declarations: [
     AppComponent, PostCreateComponent, HeaderComponent, PostListComponent
   ],
   imports: [
-    BrowserModule,FormsModule,BrowserAnimationsModule,MatInputModule,MatButtonModule,MatCardModule,MatToolbarModule,MatExpansionModule,HttpClientModule
+    BrowserModule,AppRoutingModule,FormsModule,BrowserAnimationsModule,MatInputModule,MatButtonModule,MatCardModule,MatToolbarModule,MatExpansionModule,HttpClientModule
   ],
   providers: [PostsService],
   bootstrap: [AppComponent]
